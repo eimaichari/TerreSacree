@@ -1,0 +1,107 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: sans-serif; background: #000; color: #fff; }
+
+  .hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .slider-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  .hero-top .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    align-self: flex-start;
+  }
+  .hero-center {
+    text-align: center;
+  }
+  .hero-tagline {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 10px;
+    color: #fff;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .hero-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: sticky;
+    bottom: 40px;
+  }
+  .hero-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .hero-nav a:hover {
+    background: rgba(255,255,255,0.25);
+  }
+  .give-btn {
+    background: red !important;
+    color: #fff;
+  }
+
+  .section-about {
+    padding: 100px 20px;
+    background: #f4f4f4;
+    color: #000;
+    text-align: center;
+  }
+  .container {
+    max-width: 900px;
+    margin: auto;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-decoration: none;
+  }
