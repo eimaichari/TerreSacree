@@ -1,0 +1,659 @@
+/* Universal Box Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Base Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000; /* Default background, will be overridden by main content for detail page */
+  color: #fff; /* Default text color */
+  overflow-x: hidden; /* Prevent horizontal scrollbar due to animations */
+}
+
+/* Smooth Scroll for Anchor Links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  height: 100vh; /* Default height for most pages */
+  position: relative;
+  overflow: hidden;
+}
+
+/* For the event detail page, the hero height is reduced via inline style in HTML */
+.hero[style*="height: 60vh;"] {
+    height: 60vh !important; /* Force this height for event detail pages */
+}
+
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  transition: transform 0.2s ease-out; /* Transition for parallax effect */
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.hero-top {
+    width: 100%; /* Ensure hero-top takes full width */
+    display: flex;
+    justify-content: flex-start; /* Align logo to the start */
+    align-items: center;
+}
+
+.hero-top .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  /* align-self: flex-start;  Removed as hero-top is now a flex container */
+}
+
+.hero-center {
+  text-align: center;
+  position: relative;
+  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  padding: 320px 100px; /* Adjust padding as needed for vertical centering on main pages */
+
+  /* Initial state for slide-in animation */
+  opacity: 0;
+  transform: translateY(20px);
+  /* Animation for hero-center */
+  animation: slideInUp 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.hero-tagline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 10px;
+  color: #fff;
+}
+
+.hero-nav {
+    display: flex;
+    padding: 7px 32px;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 60px;
+    background: rgba(255, 255, 255, 0.9); /* White with slight transparency over hero images */
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    max-width: 95vw;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: navFadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.5s;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background 0.3s ease, color 0.3s ease; /* Add color transition for text */
+}
+.hero-nav.dark {
+    background: rgba(0, 0, 0, 0.4); /* Darken over light sections */
+    color: #fff; /* Ensure text is readable over dark background */
+}
+@keyframes navFadeInUp {
+    from { opacity: 0; transform: translateY(20px) translateX(-50%); }
+    to { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+.hero-nav a {
+    color: #333; /* Default text color (dark for white background) */
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: color 0.3s ease, transform 0.2s ease, background 0.2s ease;
+    font-weight: 500;
+}
+.hero-nav a:hover {
+    color: #ff6a00;
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.05);
+}
+.give-btn {
+    background: #ff6a00 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+}
+.give-btn:hover {
+    background-color: #e65c00 !important;
+    transform: scale(1.05);
+}
+
+/* --- ANIMATE ON SCROLL (General) --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- WEEKLY SERVICES SECTION (`.events`) --- */
+.events {
+  background: #f4f4f4;
+  color: #000;
+  padding: 80px 20px;
+}
+
+.event-detail-content {
+background-color: #fff;
+color: #333;
+padding: 50px 20px;
+max-width: 900px;
+margin: 200px auto 50px auto;
+border-radius: 10px;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+z-index: 10;
+position: relative;
+}
+
+.events h2 {
+  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ff6a00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.events .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-grid { /* For weekly services */
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.events .event-card { /* Event cards within Weekly Services */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition here */
+}
+
+.events .event-card:hover {
+  transform: scale(1.05);
+}
+
+.events .event-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.events .event-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.events .event-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* --- UPCOMING EVENTS SECTION (`.upcoming-events-section`) --- */
+.upcoming-events-section {
+  background-color: #f0f0f0;
+  padding: 80px 20px;
+  text-align: center;
+  color: #333;
+}
+
+.events-header h2 {
+  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ff6a00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upcoming-events-section .events-grid { /* Specific for upcoming events grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Event card link wrapper for upcoming events */
+.event-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.upcoming-events-section .event-card { /* Event cards within Upcoming Events */
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  text-align: left;
+  cursor: pointer;
+}
+
+.upcoming-events-section .event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-out;
+}
+
+.upcoming-events-section .event-card:hover .event-image img {
+  transform: scale(1.05);
+}
+
+.event-info {
+  padding: 15px 20px 20px;
+}
+
+.event-date {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.event-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.event-location {
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* --- FOOTER --- */
+.site-footer {
+  background: #1b1b1b;
+  color: #ddd;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #ff6a00;
+}
+
+.footer-logo {
+  margin: 30px 0;
+}
+
+.logo-text {
+  font-size: 2.8rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.est {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 30px auto;
+  width: 80%;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+/* --- EVENT DETAIL PAGE SPECIFIC STYLES --- */
+/* These styles are crucial for the look of pages like silly-sunday.html */
+.event-detail-content {
+  background-color: #fff; /* White background for the content area */
+  color: #333; /* Dark text on white background */
+  padding: 50px 20px;
+  max-width: 200rem; /* Max width for content */
+  margin: -80px auto 0px auto; /* Pulls it up over the hero, adds bottom margin */
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for the content block */
+  z-index: 2; /* Ensure it's above the hero-overlay */
+  position: relative; /* Needed for z-index to work */
+}
+
+.event-detail-header h1 {
+  font-size: 3.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.event-detail-header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.event-meta-info {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 30px; /* Space between meta items */
+  margin-bottom: 40px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.event-meta-info p {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #666;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0; /* Override default paragraph margin */
+}
+
+.event-meta-info .icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+  color: #FF6A00; /* Use your accent color for icons */
+}
+
+.event-description {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.event-description h3 {
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.event-description p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+  .hero-center {
+    padding: 250px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero Section */
+  .hero-top {
+    width: 100%;
+  }
+  .hero-center {
+    font-size: 2.5rem;
+    padding: 200px 30px;
+    line-height: 1.3;
+  }
+  .hero-nav {
+    bottom: 30px;
+    padding: 7px 15px;
+    gap: 10px;
+  }
+  .hero-nav a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Weekly Services */
+  .events {
+    padding: 60px 15px;
+  }
+  .events h2 {
+    font-size: 2.5rem;
+  }
+  .event-grid {
+    gap: 20px;
+  }
+
+  /* Upcoming Events Section */
+  .upcoming-events-section {
+    padding: 60px 15px;
+  }
+  .events-header h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .upcoming-events-section .events-grid { /* Specificity */
+    grid-template-columns: 1fr;
+  }
+  .event-image {
+    height: 220px;
+  }
+
+  /* What We Believe Section */
+  .what-we-believe-container {
+    flex-direction: column;
+  }
+  .left-section {
+    position: static;
+    height: auto;
+    padding: 2rem;
+  }
+  .right-section {
+    padding: 2rem;
+  }
+  .left-section h1 {
+    font-size: 2.5rem;
+  }
+
+  /* FAQ Section */
+  .container.faq-section { /* Specificity */
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .faq-left {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  .faq-left h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .faq-left p {
+    text-align: center;
+  }
+  .contact-btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Event Detail Page */
+  .event-detail-content {
+    margin: -60px 20px 30px 20px;
+    padding: 30px 15px;
+  }
+  .event-detail-header h1 {
+    font-size: 2.5rem;
+  }
+  .event-detail-header p {
+    font-size: 1rem;
+  }
+  .event-meta-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .event-description h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  .footer-columns {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-column ul {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-center {
+    font-size: 2rem;
+    padding: 150px 20px;
+  }
+  .hero-nav {
+    gap: 8px;
+    padding: 5px 10px;
+    bottom: 20px;
+  }
+  .hero-nav a {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .events h2, .events-header h2 {
+    font-size: 2rem;
+  }
+  .event-detail-header h1 {
+    font-size: 2rem;
+  }
+}
