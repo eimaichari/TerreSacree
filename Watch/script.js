@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelector('.close-player').addEventListener('click', closeFacebookPlayer);
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeFacebookPlayer();
+    });
+
     // Nav bar logic
     const nav = document.querySelector('.hero-nav');
     const hero = document.querySelector('.hero');

@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const faqResizeObserver = new ResizeObserver(() => {
+        document.querySelectorAll('.faq-item.active .faq-content').forEach(content => {
+            content.style.maxHeight = 'none';
+            content.style.maxHeight = content.scrollHeight + 'px';
+        });
+    });
+    document.querySelectorAll('.faq-right').forEach(element => faqResizeObserver.observe(element));
+
     // Scroll animation code
     const animateElements = document.querySelectorAll('.animate-on-scroll');
 

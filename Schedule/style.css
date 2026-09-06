@@ -1,9 +1,17 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overflow-x: hidden; }
+html { scroll-padding-bottom: 150px; }
+body { overflow-wrap: anywhere; }
+img, video, iframe { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; min-width: 0; }
+button, input, select, .btn, .checkout-btn, .contact-btn, .add-to-cart { min-height: 44px; }
+.btn, .checkout-btn { display: inline-block; }
+
+body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff;
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100svh;
     position: relative;
     overflow: hidden;
 }
@@ -34,6 +42,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     to { opacity: 1; }
 }
 .hero-overlay {
+    min-height: inherit;
     position: relative;
     z-index: 2;
     background: rgba(0,0,0,0.6);
@@ -52,10 +61,14 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     align-self: flex-start;
 }
 .hero-center {
+    width: 100%;
+    min-width: 0;
+    margin: auto 0;
+    padding: 40px 0 120px;
     text-align: center;
     position: relative;
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     color: #fff;
     letter-spacing: 2px;
@@ -71,7 +84,6 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 .hero-center.animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
-    padding: 320px 100px;
 }
 .hero-nav {
     display: flex;
@@ -85,7 +97,8 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     border-radius: 12px;
     backdrop-filter: blur(10px);
     z-index: 9999;
-    max-width: 95vw;
+    width: max-content;
+    max-width: calc(100% - 32px);
     opacity: 0;
     transform: translateY(20px);
     animation: navFadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.5s;
@@ -102,6 +115,11 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 .hero-nav a {
+    min-width: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #333; /* Default text color (dark for white background) */
     text-decoration: none;
     padding: 10px 16px;
@@ -114,6 +132,27 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     transform: scale(1.05);
     background: rgba(0, 0, 0, 0.05);
 }
+/* Two rows keep every destination visible on phones and tablets. */
+@media (max-width: 768px) {
+    .hero-nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: calc(100% - 24px);
+        max-width: 560px;
+        gap: 4px;
+        padding: 6px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255, 255, 255, 0.95);
+    }
+    .hero-nav a, .hero-nav a.give-btn {
+        padding: 10px 4px !important;
+        font-size: 0.875rem;
+        color: #333;
+    }
+    .hero-nav .give-btn { grid-column: span 2; }
+}
+.hero-nav.dark a { color: #fff; }
+
 .give-btn {
     background: #ff6a00 !important;
     color: white !important;
@@ -128,7 +167,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 /* Watch Section */
 #watch-section {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 4rem clamp(16px, 3vw, 32px);
     background-color: #fff;
     color: #000;
 }
@@ -137,7 +176,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
     margin-bottom: 2rem;
 }
 #watch-section h2 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     color: #003087;
     margin-bottom: 1.5rem;
     letter-spacing: 1px;
@@ -243,7 +282,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 /* Weekly services section */
 .events {
-  padding: 4rem 2rem;
+  padding: 4rem clamp(16px, 3vw, 32px);
   background-color: #f8f8f8;
   color: #000;
   text-align: center;
@@ -264,7 +303,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 .event-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 2rem;
   justify-items: center;
 }
@@ -309,7 +348,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 /* Upcoming Events Section */
 .upcoming-events-section {
   background-color: #d9d9d9; /* Light background from screenshot */
-  padding: 4rem 2rem; /* Adjust padding as needed */
+  padding: 4rem clamp(16px, 3vw, 32px); /* Adjust padding as needed */
   text-align: left; /* Text alignment from screenshot */
   color: #000; /* Black text */
 }
@@ -321,7 +360,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 .events-header h2 {
   font-family: 'Inter', sans-serif; /* Matching font from screenshot */
-  font-size: 3rem; /* Large, bold heading */
+  font-size: clamp(2rem, 5vw, 3rem); /* Large, bold heading */
   font-weight: 800;
   color: #000; /* Black color */
   margin-bottom: 0; /* Remove default margin */
@@ -329,7 +368,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Responsive grid */
   gap: 2rem; /* Spacing between cards */
   max-width: 1200px;
   margin: 0 auto; /* Center the grid */
@@ -464,7 +503,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 #connect-section h2 {
   font-family: 'Inter', sans-serif; /* Poppins or Inter, matching screenshot */
-  font-size: 3.5rem; /* Large heading */
+  font-size: clamp(2.25rem, 6vw, 3.5rem); /* Large heading */
   font-weight: 800;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -592,7 +631,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
   .site-footer {
   background: #1b1b1b;
   color: #ddd;
-  padding: 60px 20px;
+  padding: 60px 20px calc(150px + env(safe-area-inset-bottom, 0px));
   font-family: 'Poppins', sans-serif;
 }
 
@@ -604,7 +643,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
   gap: 40px;
   margin-bottom: 50px;
   text-align: left;
@@ -628,6 +667,9 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff; overfl
 }
 
 .footer-column ul li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   color: #ddd;
   text-decoration: none;
   font-size: 13px;

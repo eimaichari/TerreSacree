@@ -1,14 +1,21 @@
 /* Full style.css for About page with nav fix */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-padding-bottom: 150px; }
+body { overflow-wrap: anywhere; }
+img, video, iframe { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; min-width: 0; }
+button, input, select, .btn, .checkout-btn, .contact-btn, .add-to-cart { min-height: 44px; }
+.btn, .checkout-btn { display: inline-block; }
+
 body { 
     font-family: 'Poppins', sans-serif; 
     background: #000; 
-    color: #fff; 
-    overflow-x: hidden;
+    color: #fff;
 }
 
 .hero {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100svh;
     position: relative;
     overflow: hidden;
 }
@@ -41,6 +48,7 @@ body {
 }
 
 .hero-overlay {
+    min-height: inherit;
     position: relative;
     z-index: 2;
     background: rgba(0,0,0,0.6);
@@ -59,10 +67,14 @@ body {
     align-self: flex-start;
 }
 .hero-center {
+    width: 100%;
+    min-width: 0;
+    margin: auto 0;
+    padding: 40px 0 120px;
     text-align: center;
     position: relative;
     font-family: 'Inter', 'Poppins', Arial, sans-serif;
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 500;
     color: #fff;
     letter-spacing: 2px;
@@ -76,7 +88,6 @@ body {
 .hero-center.animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
-    padding: 390px 100px;
 }
 
 @keyframes slideInUp {
@@ -111,7 +122,8 @@ body {
     border-radius: 12px;
     backdrop-filter: blur(10px);
     z-index: 9999;
-    max-width: 95vw;
+    width: max-content;
+    max-width: calc(100% - 32px);
     opacity: 0;
     transform: translateY(20px);
     animation: navFadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.5s;
@@ -136,6 +148,11 @@ body {
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 .hero-nav a {
+    min-width: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff; /* Default text color */
     text-decoration: none;
     padding: 10px 16px;
@@ -152,6 +169,28 @@ body {
     color: #ff6a00;
     background: rgba(0, 0, 0, 0.1);
 }
+/* Two rows keep every destination visible on phones and tablets. */
+@media (max-width: 768px) {
+    .hero-nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: calc(100% - 24px);
+        max-width: 560px;
+        gap: 4px;
+        padding: 6px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255, 255, 255, 0.95);
+    }
+    .hero-nav a, .hero-nav a.give-btn {
+        padding: 10px 4px !important;
+        font-size: 0.875rem;
+        color: #333;
+    }
+    .hero-nav .give-btn { grid-column: span 2; }
+}
+.hero-nav.dark a { color: #fff; }
+
+
 .give-btn {
     background: #ff6a00 !important;
     color: white !important;
@@ -172,18 +211,26 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    padding: 80px;
+    padding: clamp(32px, 6vw, 80px) 20px;
+    gap: 40px;
+    width: 100%;
     max-width: 1200px;
     margin: auto;
 }
 
+.container .container { padding: 0; }
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .container .faq-left { max-width: none; }
+}
 .faq-left {
+    min-width: 0;
     flex: 1;
     max-width: 300px;
 }
 
 .faq-left h1 {
-    font-size: 48px;
+    font-size: clamp(2rem, 5vw, 48px);
     color: #002F86;
     margin-bottom: 40px;
     letter-spacing: 2px;
@@ -218,6 +265,7 @@ body {
 }
 
 .faq-right {
+    min-width: 0;
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -249,6 +297,7 @@ body {
 }
 
 .faq-item .plus {
+    flex-shrink: 0;
     font-weight: 700;
     font-size: 24px;
 }
@@ -257,7 +306,8 @@ body {
     display: flex;
     gap: 16px;
     font-weight: 700;
-    padding: 1rem 1.5rem;
+    padding: 1rem 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -267,10 +317,12 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0 1.5rem;
+    padding: 0;
+    width: 100%;
 }
-.faq-content.active {
-    padding: 1rem 1.5rem;
+.faq-item.active .faq-content {
+    padding: 1rem 0;
+    width: 100%;
 }
 .plus {
     font-size: 24px;
@@ -296,14 +348,15 @@ body {
     top: 0;
     align-self: flex-start;
     height: fit-content;
-    padding: 4rem;
+    padding: clamp(20px, 4vw, 64px);
+    min-width: 0;
     background: #fdfdfd;
-    height: 100vh;
+    max-height: 100svh;
     overflow-y: auto;
 }
 
 .left-section h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin-bottom: 1.5rem;
@@ -325,7 +378,8 @@ body {
 
 .right-section {
     flex: 1;
-    padding: 4rem;
+    padding: clamp(20px, 4vw, 64px);
+    min-width: 0;
     background: #fdfdfd;
 }
 
@@ -333,7 +387,7 @@ body {
     background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
-    padding: 2rem;
+    padding: clamp(16px, 3vw, 32px);
     margin-bottom: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
@@ -371,9 +425,10 @@ body {
     .left-section {
         position: static;
         height: auto;
+        max-height: none;
     }
     .right-section {
-        padding: 2rem;
+        padding: clamp(16px, 3vw, 32px);
     }
 }
 
@@ -393,7 +448,7 @@ body {
 .site-footer {
     background: #1b1b1b;
     color: #ddd;
-    padding: 60px 20px;
+    padding: 60px 20px calc(150px + env(safe-area-inset-bottom, 0px));
     font-family: 'Poppins', sans-serif;
 }
 
@@ -405,7 +460,7 @@ body {
 
 .footer-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
     gap: 40px;
     margin-bottom: 50px;
     text-align: left;
@@ -429,6 +484,9 @@ body {
 }
 
 .footer-column ul li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: #ddd;
     text-decoration: none;
     font-size: 13px;
@@ -444,7 +502,7 @@ body {
 }
 
 .logo-text {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
     color: #fff;
     font-weight: 700;
     letter-spacing: -1px;

@@ -4,13 +4,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+html { scroll-padding-bottom: 150px; }
+body { overflow-wrap: anywhere; }
+img, video, iframe { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; min-width: 0; }
+button, input, select, .btn, .checkout-btn, .contact-btn, .add-to-cart { min-height: 44px; }
+.btn, .checkout-btn { display: inline-block; }
+
 
 /* Body Base Styles */
 body {
   font-family: 'Poppins', sans-serif;
   background: #000; /* Default background, will be overridden by main content for detail page */
   color: #fff; /* Default text color */
-  overflow-x: hidden; /* Prevent horizontal scrollbar due to animations */
 }
 
 /* Smooth Scroll for Anchor Links */
@@ -27,7 +33,9 @@ html {
 
 /* For the event detail page, the hero height is reduced via inline style in HTML */
 .hero[style*="height: 60vh;"] {
-    height: 60vh !important; /* Force this height for event detail pages */
+    height: auto !important;
+    min-height: 60vh;
+    min-height: 60svh; /* Force this height for event detail pages */
 }
 
 
@@ -54,6 +62,9 @@ html {
 }
 
 .hero-overlay {
+  min-height: inherit;
+  gap: 24px;
+  padding-bottom: 100px;
   position: relative;
   z-index: 2;
   background: rgba(0,0,0,0.6);
@@ -63,7 +74,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 20px;
+  padding: 40px 20px 100px;
 }
 
 .hero-top {
@@ -132,7 +143,8 @@ html {
     border-radius: 12px;
     backdrop-filter: blur(10px);
     z-index: 9999;
-    max-width: 95vw;
+    width: max-content;
+    max-width: calc(100% - 32px);
     opacity: 0;
     transform: translateY(20px);
     animation: navFadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.5s;
@@ -149,6 +161,11 @@ html {
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 .hero-nav a {
+    min-width: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #333; /* Default text color (dark for white background) */
     text-decoration: none;
     padding: 10px 16px;
@@ -161,6 +178,27 @@ html {
     transform: scale(1.05);
     background: rgba(0, 0, 0, 0.05);
 }
+/* Two rows keep every destination visible on phones and tablets. */
+@media (max-width: 768px) {
+    .hero-nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: calc(100% - 24px);
+        max-width: 560px;
+        gap: 4px;
+        padding: 6px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255, 255, 255, 0.95);
+    }
+    .hero-nav a, .hero-nav a.give-btn {
+        padding: 10px 4px !important;
+        font-size: 0.875rem;
+        color: #333;
+    }
+    .hero-nav .give-btn { grid-column: span 2; }
+}
+.hero-nav.dark a { color: #fff; }
+
 .give-btn {
     background: #ff6a00 !important;
     color: white !important;
@@ -188,7 +226,7 @@ html {
 .events {
   background: #f4f4f4;
   color: #000;
-  padding: 80px 20px;
+  padding: clamp(48px, 6vw, 80px) 20px;
 }
 
 .event-detail-content {
@@ -261,7 +299,7 @@ position: relative;
 /* --- UPCOMING EVENTS SECTION (`.upcoming-events-section`) --- */
 .upcoming-events-section {
   background-color: #f0f0f0;
-  padding: 80px 20px;
+  padding: clamp(48px, 6vw, 80px) 20px;
   text-align: center;
   color: #333;
 }
@@ -282,7 +320,7 @@ position: relative;
 
 .upcoming-events-section .events-grid { /* Specific for upcoming events grid */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -361,7 +399,7 @@ position: relative;
 .site-footer {
   background: #1b1b1b;
   color: #ddd;
-  padding: 60px 20px;
+  padding: 60px 20px calc(150px + env(safe-area-inset-bottom, 0px));
   font-family: 'Poppins', sans-serif;
 }
 
@@ -373,7 +411,7 @@ position: relative;
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
   gap: 40px;
   margin-bottom: 50px;
   text-align: left;
@@ -397,6 +435,9 @@ position: relative;
 }
 
 .footer-column ul li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   color: #ddd;
   text-decoration: none;
   font-size: 13px;
@@ -412,7 +453,7 @@ position: relative;
 }
 
 .logo-text {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   color: #fff;
   font-weight: 700;
   letter-spacing: -1px;
@@ -444,7 +485,7 @@ position: relative;
   background-color: #fff; /* White background for the content area */
   color: #333; /* Dark text on white background */
   padding: 50px 20px;
-  max-width: 200rem; /* Max width for content */
+  max-width: 1200px; /* Max width for content */
   margin: -80px auto 0px auto; /* Pulls it up over the hero, adds bottom margin */
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for the content block */
@@ -452,8 +493,12 @@ position: relative;
   position: relative; /* Needed for z-index to work */
 }
 
+.event-hero-graphic { min-width: 0; max-width: 800px; margin: auto; }
+.event-hero-graphic img { display: block; width: 100%; height: auto; max-height: 40svh; object-fit: contain; }
+.event-meta-info p { min-width: 0; }
+.event-meta-info .icon { flex-shrink: 0; }
 .event-detail-header h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   color: #000;
@@ -531,15 +576,6 @@ position: relative;
     padding: 200px 30px;
     line-height: 1.3;
   }
-  .hero-nav {
-    bottom: 30px;
-    padding: 7px 15px;
-    gap: 10px;
-  }
-  .hero-nav a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
 
   /* Weekly Services */
   .events {
@@ -586,7 +622,7 @@ position: relative;
   /* FAQ Section */
   .container.faq-section { /* Specificity */
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 40px 20px 100px;
   }
   .faq-left {
     max-width: 100%;
@@ -612,7 +648,11 @@ position: relative;
     margin: -60px 20px 30px 20px;
     padding: 30px 15px;
   }
-  .event-detail-header h1 {
+  .event-hero-graphic { min-width: 0; max-width: 800px; margin: auto; }
+.event-hero-graphic img { display: block; width: 100%; height: auto; max-height: 40svh; object-fit: contain; }
+.event-meta-info p { min-width: 0; }
+.event-meta-info .icon { flex-shrink: 0; }
+.event-detail-header h1 {
     font-size: 2.5rem;
   }
   .event-detail-header p {
@@ -641,19 +681,14 @@ position: relative;
     font-size: 2rem;
     padding: 150px 20px;
   }
-  .hero-nav {
-    gap: 8px;
-    padding: 5px 10px;
-    bottom: 20px;
-  }
-  .hero-nav a {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
   .events h2, .events-header h2 {
     font-size: 2rem;
   }
-  .event-detail-header h1 {
+  .event-hero-graphic { min-width: 0; max-width: 800px; margin: auto; }
+.event-hero-graphic img { display: block; width: 100%; height: auto; max-height: 40svh; object-fit: contain; }
+.event-meta-info p { min-width: 0; }
+.event-meta-info .icon { flex-shrink: 0; }
+.event-detail-header h1 {
     font-size: 2rem;
   }
 }

@@ -1,10 +1,16 @@
 /* Full style.css with cart icon and connect section */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-padding-bottom: 150px; }
+body { overflow-wrap: anywhere; }
+img, video, iframe { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; min-width: 0; }
+button, input, select, .btn, .checkout-btn, .contact-btn, .add-to-cart { min-height: 44px; }
+.btn, .checkout-btn { display: inline-block; }
+
 body {
     font-family: 'Inter', sans-serif;
     background: #fff; /* Changed to white for light theme */
     color: #333; /* Darker text for contrast */
-    overflow-x: hidden;
     line-height: 1.6;
 }
 
@@ -23,8 +29,13 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
     position: relative;
     overflow: hidden;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Darker overlay for readability */
-    z-index: -50;
+    z-index: 0;
 }
+.hero-overlay { min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 140px; }
+.hero-top .logo { width: 150px; height: 150px; margin: -3rem auto; background: url('/photos/Logo-removebg-preview.png') center / cover; }
+.logo a { display: block; width: 100%; height: 100%; }
+.hero-center { margin: auto 0; padding: 40px 0; font-size: clamp(2rem, 5vw, 3rem); text-align: center; }
+.hero-center.animate-on-scroll { opacity: 1; transform: none; }
 .hero-background {
     position: absolute;
     top: 0;
@@ -189,7 +200,8 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
     border-radius: 12px;
     backdrop-filter: blur(10px);
     z-index: 999;
-    max-width: 95vw;
+    width: max-content;
+    max-width: calc(100% - 32px);
     opacity: 0;
     transform: translateY(20px);
     animation: navFadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.5s;
@@ -206,6 +218,11 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 .hero-nav a {
+    min-width: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #333;
     text-decoration: none;
     padding: 10px 16px;
@@ -218,6 +235,27 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
     transform: scale(1.05);
     background: rgba(0, 0, 0, 0.05);
 }
+/* Two rows keep every destination visible on phones and tablets. */
+@media (max-width: 768px) {
+    .hero-nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: calc(100% - 24px);
+        max-width: 560px;
+        gap: 4px;
+        padding: 6px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255, 255, 255, 0.95);
+    }
+    .hero-nav a, .hero-nav a.give-btn {
+        padding: 10px 4px !important;
+        font-size: 0.875rem;
+        color: #333;
+    }
+    .hero-nav .give-btn { grid-column: span 2; }
+}
+.hero-nav.dark a { color: #fff; }
+
 .give-btn {
     background: #ff6a00 !important;
     color: white !important;
@@ -230,7 +268,7 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
 }
 
 section {
-    padding: 80px 20px;
+    padding: clamp(48px, 6vw, 80px) 20px;
     text-align: center;
     background: #f8f8f8; /* Light gray for sections */
     color: #333; /* Darker text for light theme */
@@ -263,7 +301,7 @@ section p {
 .service-times-grid,
 .what-to-expect-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
     max-width: 900px;
     margin: 40px auto 0;
@@ -386,7 +424,7 @@ section p {
 .site-footer {
     background: #1b1b1b; /* Unchanged */
     color: #ddd; /* Unchanged */
-    padding: 60px 20px;
+    padding: 60px 20px calc(150px + env(safe-area-inset-bottom, 0px));
     font-family: 'Poppins', sans-serif;
 }
 .footer-container {
@@ -396,7 +434,7 @@ section p {
 }
 .footer-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
     gap: 40px;
     margin-bottom: 50px;
     text-align: left;
@@ -416,6 +454,9 @@ section p {
     margin-bottom: 8px;
 }
 .footer-column ul li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: #ddd;
     text-decoration: none;
     font-size: 13px;
@@ -428,7 +469,7 @@ section p {
     margin: 30px 0;
 }
 .logo-text {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
     color: #fff;
     font-weight: 700;
     letter-spacing: -1px;
@@ -483,7 +524,7 @@ section p {
 
 .shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 40px auto;

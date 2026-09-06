@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Hero content wrapper scroll behavior
         const heroContentScrollStart = viewportHeight * 1.5;
-        if (scrollY >= heroContentScrollStart) {
+        if (!window.matchMedia('(max-width: 768px), (max-height: 500px)').matches && scrollY >= heroContentScrollStart) {
             heroContentWrapper.classList.add('absolute-scroll');
             heroContentWrapper.style.top = `${heroContentScrollStart}px`;
         } else {
@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = scrollY;
     };
 
+    window.addEventListener('resize', handleScrollEffects);
     window.addEventListener('scroll', throttle(handleScrollEffects, 16)); // ~60fps
     handleScrollEffects();
 });

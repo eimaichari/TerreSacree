@@ -31,16 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const navRect = nav.getBoundingClientRect();
             const navCenterY = navRect.top + navRect.height / 2;
 
-            // Hero content wrapper scroll behavior
-            const heroContentScrollStart = viewportHeight * 1.5;
-            if (scrollY >= heroContentScrollStart) {
-                heroContentWrapper.classList.add('absolute-scroll');
-                heroContentWrapper.style.top = `${heroContentScrollStart}px`;
-            } else {
-                heroContentWrapper.classList.remove('absolute-scroll');
-                heroContentWrapper.style.top = '0';
-            }
-
             // Dynamic nav background based on underlying section
             let underlyingBg = '#fff'; // Default to body background
             sections.forEach(section => {
