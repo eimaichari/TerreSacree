@@ -32,7 +32,7 @@ h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; }
     z-index: 0;
 }
 .hero-overlay { min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 140px; }
-.hero-top .logo { width: 150px; height: 150px; margin: -3rem auto; background: url('/photos/brand/Logo-removebg-preview.png') center / cover; }
+.hero-top .logo { width: 110px; height: 110px; margin: -2rem auto; background: url('/photos/brand/Logo-removebg-preview.png') center / cover; }
 .logo a { display: block; width: 100%; height: 100%; }
 .hero-center { margin: auto 0; padding: 40px 0; font-size: clamp(2rem, 5vw, 3rem); text-align: center; }
 .hero-center.animate-on-scroll { opacity: 1; transform: none; }

@@ -15,9 +15,9 @@ button, input, select, .btn, .checkout-btn, .contact-btn, .add-to-cart { min-hei
   }
 
   .logo{
-    width: 150px;
-    height: 150px;
-    margin: -3rem auto;
+    width: 110px;
+    height: 110px;
+    margin: -2rem auto;
     background-image: url('/photos/brand/Logo-removebg-preview.png');
     background-size: cover;
   }
