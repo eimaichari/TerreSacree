@@ -23,7 +23,7 @@ body {
     width: 150px;
     height: 150px;
     margin: -3rem auto;
-    background-image: url('/photos/Logo-removebg-preview.png');
+    background-image: url('/photos/brand/Logo-removebg-preview.png');
     background-size: cover;
 }
 .logo a {
@@ -38,7 +38,7 @@ body {
     object-fit: cover;
     opacity: 0;
     animation: fadeIn 1.5s ease-out forwards;
-    background-image: url("/photos/About.JPG");
+    background-image: url("/photos/page-hero/About.JPG");
     background-size: cover;
 }
 

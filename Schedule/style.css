@@ -19,7 +19,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff;
     width: 150px;
     height: 150px;
     margin: -3rem auto;
-    background-image: url('/photos/Logo-removebg-preview.png');
+    background-image: url('/photos/brand/Logo-removebg-preview.png');
     background-size: cover;
   }
 .logo a {
@@ -34,7 +34,7 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #fff;
     object-fit: cover;
     opacity: 0;
     animation: fadeIn 1.5s ease-out forwards;
-    background-image: url("/photos/491736700_1109175231250478_1716666743057064474_n.jpg");
+    background-image: url("/photos/home/491736700_1109175231250478_1716666743057064474_n.jpg");
     background-size: cover;
 }
 @keyframes fadeIn {
