@@ -2,9 +2,9 @@
  * The single source of truth for church-wide information.
  * Update these values instead of editing individual pages.
  */
-window.TERRE_SACREE = {
-  name: 'Terre Sacrée',
-  legalName: 'Terre Sacrée Church',
+window.CHURCH_SITE = {
+  name: 'True Disciples of Christ Tabernacle',
+  legalName: 'True Disciples of Christ Tabernacle Church',
   established: '2025',
   address: ['9 Avenue Colonel Mpia', 'Lolo La Crevette'],
   phone: '(+243) 815 797 188',
@@ -17,7 +17,7 @@ window.TERRE_SACREE = {
 };
 
 (() => {
-  const site = window.TERRE_SACREE;
+  const site = window.CHURCH_SITE;
   const text = (selector, value) =>
     document.querySelectorAll(selector).forEach((element) => { element.textContent = value; });
 
@@ -41,12 +41,4 @@ window.TERRE_SACREE = {
   document.querySelectorAll('.footer-bottom').forEach((element) => {
     element.textContent = `© ${site.established} ${site.name} – All rights reserved.`;
   });
-  const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  while (textWalker.nextNode()) textNodes.push(textWalker.currentNode);
-  textNodes.forEach((node) => {
-    if (node.parentElement.closest('script, style')) return;
-    node.nodeValue = node.nodeValue.replaceAll('Terre Sacrée', site.name);
-  });
-  document.title = document.title.replace(/Terre Sacrée/g, site.name);
 })();
