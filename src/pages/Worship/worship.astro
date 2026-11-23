@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { church } from '../../data/church';
+---
+
+<BaseLayout title={`Worship`} stylesheet="/styles/worship.css" script="/scripts/worship.js">
+<header class="hero">
+    <div class="background-image">
+    </div>
+    <div class="hero-overlay">
+        <div class="hero-top">
+        <div class="logo"><a href="/index.html" aria-label={`${church.name} Home`}></a></div>
+        </div>
+        <div class="hero-center animate-on-scroll">Worship</div>
+    </div>
+    </header>
+    <Navigation />
+    <Footer />
+</BaseLayout>

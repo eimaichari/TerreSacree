@@ -1,17 +1,17 @@
-# TerreSacree
+# True Disciples of Christ Tabernacle
 
-## Church information
+## Development
 
-Update the church name, address, contact details, map link, and logo paths in
-[`shared/site-config.js`](shared/site-config.js). Every page loads this shared
-configuration, and the Visit page reads its location details directly from it.
+Install dependencies with `npm install`, then run `npm run dev` to start the
+local development server. Run `npm run build` to create the production site in
+`dist/`.
 
-## Media folders
+## Site structure
 
-- `photos/brand` — logo files
-- `photos/home` — home-page carousel and gallery images
-- `photos/events` — event artwork
-- `photos/visit` — Visit-page photos and map
-- `photos/page-hero` — page and promotional imagery
-- `photos/social` — social/platform icons
-- `photos/media` — video and speaker media
+- `src/components/Navigation.astro` — shared top navigation
+- `src/components/Footer.astro` — shared footer navigation
+- `src/data/church.ts` — church name, contact details, address, and logo paths
+- `src/pages/` — route-specific page content
+- `public/photos/` — image and media assets
+- `public/styles/` and `public/scripts/` — preserved page-specific styling and
+  interaction scripts

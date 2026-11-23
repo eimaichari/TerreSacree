@@ -1,0 +1,51 @@
+---
+import { church } from '../data/church';
+---
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>{church.name}</h4>
+        <ul>
+          <li><a href="/About/about.html">About</a></li>
+          <li><a href="/Worship/worship.html">Worship</a></li>
+          <li><a href="/Schedule/schedule.html">Schedule</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/Give/give.html">Give</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="/Visit/visit.html">Visit</a></li>
+          <li><a href="/Watch/watch.html">Watch</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="/index.html" aria-label={`${church.name} home`}>
+      <div class="footer-logo">
+        <h2 class="logo-text">{church.name}</h2>
+        <p class="est">EST. {church.established}</p>
+      </div>
+    </a>
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      <p>© {church.established} {church.name} – All rights reserved.</p>
+    </div>
+  </div>
+</footer>

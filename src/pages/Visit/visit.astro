@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { church } from '../../data/church';
+---
+
+<BaseLayout title={`Visit | ${church.name}`} stylesheet="/styles/visit.css" script="/scripts/visit.js">
+<header class="hero">
+    <div class="hero-background">
+        <img src="/photos/visit/Container 1.jpeg" class="hero-scattered-image" alt="Scattered Image 1">
+        <img src="/photos/visit/Container 2.jpeg" class="hero-scattered-image" alt="Scattered Image 2">
+        <img src="/photos/visit/Container 3.JPG" class="hero-scattered-image" alt="Scattered Image 3">
+        <img src="/photos/visit/Container 4.jpeg" class="hero-scattered-image" alt="Scattered Image 4">
+        <img src="/photos/visit/Container 5.jpeg" class="hero-scattered-image" alt="Scattered Image 5">
+        <img src="/photos/visit/Container 6.jpeg" class="hero-scattered-image" alt="Scattered Image 6">
+        <img src="/photos/visit/Container 7.jpeg" class="hero-scattered-image" alt="Scattered Image 7">
+        <img src="/photos/visit/Container 8.JPG" class="hero-scattered-image" alt="Scattered Image 8">
+    </div>
+    <div class="hero-content-wrapper">
+        <div class="hero-overlay-content animate-on-scroll" id="hero-content">
+            <h1>Visit {church.name}</h1>
+            <p>We'd love to have you join us this Sunday at {church.name}. Our services are full of life, purpose, and a community that will feel like home. Come experience what God is doing!</p>
+            <a href="#service-times" class="btn">Plan Your Visit</a>
+        </div>
+    </div>
+    </header>
+    <Navigation />
+    <section id="youre-invited" class="animate-on-scroll">
+        <h2>You're Invited</h2>
+        <p>Join us this Sunday at {church.name}. Our services are full of life, purpose, and a community that will feel like home. Come experience what God is doing!</p>
+    </section>
+    <section id="service-times" class="animate-on-scroll">
+        <h2>Service Times</h2>
+        <p>Join us in person or online for our weekly services.</p>
+        <div class="service-times-grid">
+            <div class="time-card">
+                <h3>Sunday Morning</h3>
+                <p>9:00 AM - Traditional Service</p>
+                <p>11:00 AM - Contemporary Service</p>
+            </div>
+            <div class="time-card">
+                <h3>Wednesday Evening</h3>
+                <p>7:00 PM - Midweek Bible Study</p>
+            </div>
+            <div class="time-card">
+                <h3>Online</h3>
+                <p>Live Stream available during all services.</p>
+                <p>On-demand content available 24/7.</p>
+            </div>
+        </div>
+    </section>
+    <section id="location" class="animate-on-scroll">
+        <h2>Our Location</h2>
+        <p>Find us easily and join our community.</p>
+        <div class="location-content">
+            <div class="location-details">
+                <h3>{church.legalName}</h3>
+                <p>{church.address[0]}</p>
+                <p>{church.address[1]}</p>
+                <p>Phone: {church.phone}</p>
+                <p>Email: {church.email}</p>
+                <a href={church.directionsUrl} target="_blank" rel="noopener noreferrer" class="btn mt-4">Get Directions</a>
+            </div>
+            <div class="location-map">
+                <img src="/photos/visit/Map.png" alt="Map to {church.name}" class="map-image">
+            </div>
+        </div>
+    </section>
+    <section id="what-to-expect" class="animate-on-scroll">
+        <h2>What to Expect</h2>
+        <p>Here's a glimpse of what your first visit might be like.</p>
+        <div class="what-to-expect-grid">
+            <div class="expect-card">
+                <h4>Friendly Faces</h4>
+                <p>You'll be greeted by warm and welcoming volunteers who are ready to help you find your way.</p>
+            </div>
+            <div class="expect-card">
+                <h4>Inspiring Worship</h4>
+                <p>Experience powerful music and heartfelt worship that connects you with God.</p>
+            </div>
+            <div class="expect-card">
+                <h4>Relevant Message</h4>
+                <p>Hear a practical and encouraging message based on biblical truths that apply to your life.</p>
+            </div>
+            <div class="expect-card">
+                <h4>Casual Atmosphere</h4>
+                <p>Come as you are! We care about you, not what you wear. Feel comfortable and be yourself.</p>
+            </div>
+        </div>
+    </section>
+    <section id="kids-ministry" class="animate-on-scroll">
+        <h2>Kids Ministry</h2>
+        <p>A safe and fun environment for your children to learn about God.</p>
+        <div class="kids-content">
+            <div class="kids-image"></div>
+            <div class="kids-text">
+                <h3>{church.name} Kids</h3>
+                <p>Our dedicated Kids Ministry provides age-appropriate lessons, engaging activities, and a secure environment for children from nursery to elementary school.</p>
+                <p>We believe in nurturing young hearts and helping them discover God's love in a way that's exciting and memorable.</p>
+                <a href="#kids-info" class="btn mt-4">Learn More About Kids</a>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</BaseLayout>

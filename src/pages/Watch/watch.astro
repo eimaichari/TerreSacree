@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { church } from '../../data/church';
+---
+
+<BaseLayout title={`Schedule`} stylesheet="/styles/watch.css" script="/scripts/watch.js">
+<header class="hero">
+        <div class="background-image">
+            <video autoplay muted loop playsinline class="background-video" poster="/photos/page-hero/Worship.jpg">
+            <source src="/photos/media/Pastor Levi.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-top">
+                <div class="logo"><a href="/index.html" aria-label={`${church.name} Home`}></a></div>
+            </div>
+            <div class="hero-center animate-on-scroll">Watch</div>
+        </div>
+    </header>
+    <Navigation />
+            
+
+    <!-- Watch Section -->
+    <section id="watch-section">
+  <img src="/path-to-logo.png" alt={`${church.name} logo`} class="logo">
+  <h2>
+    Watch {church.name}
+  </h2>
+
+  <!-- Livestream Buttons -->
+  <div class="livestream-buttons" style="margin-bottom: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+    <a href="#" class="youtube-button">YOUTUBE LIVESTREAM</a>
+    <a href="#" class="facebook-button">FACEBOOK LIVESTREAM</a>
+  </div>
+
+  <!-- Video Preview -->
+  <div class="watch-preview">
+    <video controls style="width: 100%; display: block;">
+      <source src="/photos/media/Pastor Levi.mov" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Previous Messages Section -->
+  <div class="previous-messages">
+    <p style="font-family: monospace; font-size: 1.1rem; margin-bottom: 1rem;">
+      WATCH OR LISTEN TO PREVIOUS MESSAGES
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
+      <a href="#"><img src="/photos/social/Spotify_icon.svg" alt="Spotify" style="width: 32px; height: 32px; object-fit: contain;"></a>
+      <a href="#"><img src="/photos/social/Apple-icon.svg" alt="Apple Podcasts" style="width: 32px; height: 32px; object-fit: contain;"></a>
+      <a href="#"><img src="/photos/social/YouTube_full-color_icon_(2024).svg" alt="YouTube" style="width: 32px; height: 32px; object-fit: contain;"></a>
+    </div>
+  </div>
+</section>
+
+<section id="watch-clips-section">
+    <!-- Watch Clips Grid -->
+  <div class="watch-clips">
+    <h3>WATCH CLIPS</h3>
+    <div class="clips-grid">
+      <!-- Clip Card -->
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+1" alt="La Connaissance Brise Le Mensonge De Satan">
+        <div class="clip-info">
+          <h4>La Connaissance Brise Le Mensonge De Satan</h4>
+          <p>Levi Kongolo · 28.05.25</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/1433521417980000">▶</button>
+        </div>
+      </div>
+  
+      <!-- Repeat for more clips -->
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+2" alt="A Perfect Spiritual Father Does Not Exist">
+        <div class="clip-info">
+          <h4>A Perfect Spiritual Father Does Not Exist</h4>
+          <p>Habib Poaty · 27.05.25</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/4251758608433927">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+3" alt="La Peur C'est La Limitation">
+        <div class="clip-info">
+          <h4>La Peur C'est La Limitation</h4>
+          <p>Levi Kongolo · 18.04.25</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/1731421071056196">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+4" alt="Dieu Respecte Les Principes">
+        <div class="clip-info">
+          <h4>Dieu respecte les principes</h4>
+          <p>Levi Kongolo · 03.05.25</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/1004892505181458">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+5" alt="Matondo Pona RDC">
+        <div class="clip-info">
+          <h4>Matondo Pona RDC</h4>
+          <p>Sissi Boboli · 11.12.24</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/463945773041315">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+6" alt="Matondo Pona RDC">
+        <div class="clip-info">
+          <h4>Matondo Pona RDC</h4>
+          <p>Levi kongolo · 10.12.24</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/1123866159255199">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+7" alt="Message Aux Hommes De Dieu">
+        <div class="clip-info">
+          <h4>Message Aux Hommes De Dieu</h4>
+          <p>Levi kongolo · 13.06.24</p>
+          <button class="play-btn" data-fb="https://www.facebook.com/terresacree.jln/videos/1020039926164984">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+8" alt="La vie Chretiene">
+        <div class="clip-info">
+          <h4>La vie Chretiene</h4>
+          <p>Levi Kongolo · 12.12.23</p>
+          <button class="play-btn">▶</button>
+        </div>
+      </div>
+  
+      <div class="clip-card">
+        <img src="https://placehold.co/250x140/000000/FFFFFF?text=Video+Thumbnail+9" alt="Equilibre 2023">
+        <div class="clip-info">
+          <h4>Equilibre 2023</h4>
+          <p>Marcello Tunasi · 10.11.23</p>
+          <button class="play-btn" data-fab="https://www.facebook.com/terresacree.jln/videos/1010147610181642">▶</button>
+        </div>
+      </div>
+  
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+  </section>
+
+    <div id="facebook-player" role="dialog" aria-modal="true" aria-label="Video player" style="display:none;">
+      <button type="button" class="close-player" aria-label="Close video">×</button>
+      <div class="facebook-player-frame">
+        <iframe id="fb-embed-frame" title="Facebook video" allowfullscreen></iframe>
+      </div>
+    </div>
+    <Footer />
+</BaseLayout>
