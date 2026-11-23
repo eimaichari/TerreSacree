@@ -1,0 +1,31 @@
+.hero-nav {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.hero-nav a {
+  color: #333;
+}
+
+/* Applied by the shared navigation script while the fixed nav crosses a light surface. */
+.hero-nav.is-on-light-surface {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.hero-nav.is-on-light-surface a {
+  color: #fff;
+}
+
+@media (max-width: 768px), (max-height: 500px) {
+  .hero-nav,
+  .hero-nav.is-on-light-surface {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .hero-nav a,
+  .hero-nav.is-on-light-surface a {
+    color: #333;
+  }
+}

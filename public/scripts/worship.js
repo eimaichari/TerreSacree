@@ -1,5 +1,9 @@
 // Full script.js with cart icon and connect form
 document.addEventListener('DOMContentLoaded', () => {
+    // This page has no shop, cart, or form controls. Its navigation is handled
+    // by the shared navigation script.
+    return;
+
     const heroContent = document.getElementById('hero-content');
     const heroContentWrapper = document.querySelector('.hero-content-wrapper');
     const sections = document.querySelectorAll('section');
