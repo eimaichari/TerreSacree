@@ -35,13 +35,12 @@ import { church } from '../../data/church';
         <p>Join us in person or online for our weekly services.</p>
         <div class="service-times-grid">
             <div class="time-card">
-                <h3>Sunday Morning</h3>
-                <p>9:00 AM - Traditional Service</p>
-                <p>11:00 AM - Contemporary Service</p>
+                <h3>Sunday Afternoon</h3>
+                <p>1:00 PM - Traditional Service</p>
             </div>
             <div class="time-card">
-                <h3>Wednesday Evening</h3>
-                <p>7:00 PM - Midweek Bible Study</p>
+                <h3>Wednesday Morning</h3>
+                <p>10:00 AM - Praise and Worship</p>
             </div>
             <div class="time-card">
                 <h3>Online</h3>
@@ -62,9 +61,11 @@ import { church } from '../../data/church';
                 <p>Email: {church.email}</p>
                 <a href={church.directionsUrl} target="_blank" rel="noopener noreferrer" class="btn mt-4">Get Directions</a>
             </div>
-            <div class="location-map">
-                <img src="/photos/visit/Map.png" alt="Map to {church.name}" class="map-image">
-            </div>
+            <iframe 
+                src={church.directionsUrl} 
+                width="600" height="450" style="border:0;" 
+                allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
         </div>
     </section>
     <section id="what-to-expect" class="animate-on-scroll">
@@ -89,6 +90,7 @@ import { church } from '../../data/church';
             </div>
         </div>
     </section>
+    <!-- 
     <section id="kids-ministry" class="animate-on-scroll">
         <h2>Kids Ministry</h2>
         <p>A safe and fun environment for your children to learn about God.</p>
@@ -102,5 +104,6 @@ import { church } from '../../data/church';
             </div>
         </div>
     </section>
+    -->
     <Footer />
 </BaseLayout>
