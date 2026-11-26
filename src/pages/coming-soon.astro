@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { church } from '../data/church';
+---
+
+<BaseLayout title={`Coming Soon | ${church.name}`} stylesheet="/styles/style.css">
+  <header class="hero">
+    <div class="slider-container" aria-hidden="true">
+      <div class="slide active"><img src="/photos/home/Background image 1.jpg" alt="" /></div>
+    </div>
+    <div class="hero-overlay">
+      <div class="hero-top">
+        <div class="logo"><a href="/index.html" aria-label={`${church.name} Home`}></a></div>
+      </div>
+      <div class="hero-center">
+        <div class="hero-tagline"><span>{church.name}</span></div>
+        <h1 class="hero-title">Coming Soon</h1>
+        <p class="coming-soon-message">We're preparing something for you. Please check back soon.</p>
+        <a href="/index.html" class="coming-soon-link">Back to Home →</a>
+      </div>
+    </div>
+  </header>
+  <Navigation />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .coming-soon-message { margin: 1rem auto 1.75rem; max-width: 32rem; line-height: 1.7; }
+  .coming-soon-link { display: inline-block; border: 1px solid white; padding: 0.8rem 1.5rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+  .coming-soon-link:hover, .coming-soon-link:focus-visible { background: white; color: black; }
+</style>
